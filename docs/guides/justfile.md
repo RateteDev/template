@@ -42,17 +42,16 @@ _back-check:
 _back-fix:
     cd apps/backend && bunx biome check --write .
 
-# Dart (lint と format が分離型) の場合
+# ESLint + Prettier (lint と format が分離型) の場合
 [private]
 _front-check:
-    cd apps/android && flutter analyze
-    cd apps/android && dart run custom_lint
-    cd apps/android && dart format --set-exit-if-changed lib/ test/
+    cd apps/frontend && bunx eslint .
+    cd apps/frontend && bunx prettier --check .
 
 [private]
 _front-fix:
-    cd apps/android && dart fix --apply
-    cd apps/android && dart format lib/ test/
+    cd apps/frontend && bunx eslint --fix .
+    cd apps/frontend && bunx prettier --write .
 ```
 
 ### 内部レシピ
@@ -80,9 +79,9 @@ front-dev:
 レシピに引数を持たせる場合、デフォルト値を設定する。引数が複雑になる場合はレシピを分割する。
 
 ```just
-# Build APK
-front-build profile="debug":
-    cd apps/android && flutter build apk --{{ profile }}
+# Start frontend dev server
+front-dev port="3000":
+    cd apps/frontend && bun run dev --port {{ port }}
 ```
 
 ## CI 環境での導入
