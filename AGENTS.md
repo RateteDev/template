@@ -19,21 +19,6 @@ Monorepo structure:
 
 All commands go through `just`. Run `just --list` to list available recipes.
 
-```sh
-just setup       # Install dependencies
-just ci-local    # Run local CI
-just back-dev    # Start backend dev server
-just back-check  # Backend lint + format check
-just back-fix    # Backend auto-fix
-just back-test   # Backend tests
-just back-ci     # Backend CI (check → test → build)
-just front-dev   # Start frontend dev server
-just front-check # Frontend lint + format check
-just front-fix   # Frontend auto-fix
-just front-test  # Frontend tests
-just front-ci    # Frontend CI (check → test → build)
-```
-
 ## Conventions
 
 - All development commands are defined in `justfile`.
