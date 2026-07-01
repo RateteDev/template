@@ -24,10 +24,10 @@ jobs:
   # TODO: Add per-app CI jobs.
   # Each app should have its own job with appropriate setup steps.
   # Example:
-  #   be-ci:
+  #   back-ci:
   #     runs-on: ubuntu-latest
   #     timeout-minutes: 15
   #     steps:
   #       - uses: actions/checkout@v4
   #       - uses: extractions/setup-just@v2
-  #       - run: just be-ci
+  #       - run: just back-ci

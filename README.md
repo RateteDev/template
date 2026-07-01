@@ -5,18 +5,19 @@
 ## Setup
 
 ```sh
-make setup
+just setup
 ```
 
 ## Development
 
 ```sh
-make dev
+just back-dev
+just front-dev
 ```
 
 ## Commands
 
-Run `make help` to see all available commands.
+Run `just --list` to see all available recipes.
 
 ## License
 

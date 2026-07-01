@@ -53,8 +53,8 @@ pino を使用する。
 
 ### package.json の scripts は削除する
 
-- モノレポ全体の開発コマンドはルートの `Makefile` に集約する方針のため、各 package の `scripts` と二重管理になる。
-- `Makefile` 側から直接 `bun run` や `biome` を呼べば十分であり、`scripts` を経由する必要がない。
+- モノレポ全体の開発コマンドはルートの `justfile` に集約する方針のため、各 package の `scripts` と二重管理になる。
+- `justfile` 側から直接 `bun run` や `biome` を呼べば十分であり、`scripts` を経由する必要がない。
 
 ### 不要なフィールドを削除する
 

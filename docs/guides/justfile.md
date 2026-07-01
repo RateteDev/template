@@ -35,22 +35,22 @@ dev:
 ```just
 # Biome (lint + format が一体型) の場合
 [private]
-_be-check:
+_back-check:
     cd apps/backend && bunx biome check .
 
 [private]
-_be-fix:
+_back-fix:
     cd apps/backend && bunx biome check --write .
 
 # Dart (lint と format が分離型) の場合
 [private]
-_fl-check:
+_front-check:
     cd apps/android && flutter analyze
     cd apps/android && dart run custom_lint
     cd apps/android && dart format --set-exit-if-changed lib/ test/
 
 [private]
-_fl-fix:
+_front-fix:
     cd apps/android && dart fix --apply
     cd apps/android && dart format lib/ test/
 ```
@@ -65,14 +65,14 @@ _fl-fix:
 
 ```just
 [group('Backend')]
-be-ci:
-be-test:
-be-up:
+back-ci:
+back-test:
+back-up:
 
 [group('Frontend')]
-fe-ci:
-fe-test:
-fe-dev:
+front-ci:
+front-test:
+front-dev:
 ```
 
 ### 引数
@@ -81,7 +81,7 @@ fe-dev:
 
 ```just
 # Build APK
-fl-build profile="debug":
+front-build profile="debug":
     cd apps/android && flutter build apk --{{ profile }}
 ```
 

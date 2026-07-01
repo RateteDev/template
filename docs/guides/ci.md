@@ -71,10 +71,10 @@ pre-commit ではアプリ毎に変更スコープを絞り、関連するチェ
 set -euo pipefail
 
 if git diff --cached --name-only | grep -q "^apps/backend/"; then
-  just _back-check
+  just back-check
 fi
 
 if git diff --cached --name-only | grep -q "^apps/frontend/"; then
-  just _front-check
+  just front-check
 fi
 ```
