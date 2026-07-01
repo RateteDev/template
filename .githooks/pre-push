@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-log=$(mktemp -t pre-push.XXXXXX)
-trap 'rm -f "$log"' EXIT
-
-printf '▶ pre-push: local CI...\n'
-if ! just ci-local >"$log" 2>&1; then
-  printf '❌ pre-push: CI failed\n'
-  cat "$log"
-  exit 1
-fi
-printf '✅ pre-push: all green\n'
+# pre-push hook is intentionally empty.
+# CI is handled by remote (GitHub Actions).
+# Run `just back-ci` / `just front-ci` locally after significant changes.

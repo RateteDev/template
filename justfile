@@ -84,7 +84,8 @@ front-ci:
 # ─── CI ───
 
 # Run local CI (mirrors remote CI pipeline)
-ci-local: _check-agents-sync
+ci-local:
+    just _check-agents-sync
     just back-ci & just front-ci & wait
 
 [private]
