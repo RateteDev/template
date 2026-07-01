@@ -21,12 +21,15 @@ All commands go through `just`. Run `just --list` to list available recipes.
 
 ```sh
 just setup      # Install dependencies
-just dev        # Start dev servers
-just build      # Build everything
-just test       # Run tests
-just check      # Lint + format check
-just fix        # Auto-fix lint + format
 just ci-local   # Run local CI
+just be-dev     # Start backend dev server
+just be-check   # Backend lint + format check
+just be-fix     # Backend auto-fix
+just be-test    # Backend tests
+just fe-dev     # Start frontend dev server
+just fe-check   # Frontend lint + format check
+just fe-fix     # Frontend auto-fix
+just fe-test    # Frontend tests
 ```
 
 ## Conventions
