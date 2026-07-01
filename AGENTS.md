@@ -1,23 +1,43 @@
-# Agents
+# Project: {project-name}
 
-## Reviewer
+> {One-line description of the project.}
 
-Review code changes for correctness, security, and adherence to project conventions.
+## Architecture
 
-### Instructions
+Monorepo structure:
 
-- Check for OWASP top-10 vulnerabilities.
-- Verify that new code follows the conventions in CLAUDE.md.
-- Flag missing tests for new logic.
-- Report findings as a numbered list sorted by severity.
+- `apps/` — Application entry points
+- `packages/` — Shared libraries and internal packages
 
-## Researcher
+## Tech Stack
 
-Investigate libraries, APIs, or patterns before implementation.
+- Language: {language}
+- Runtime: {runtime}
+- Package Manager: {package-manager}
 
-### Instructions
+## Commands
 
-- Search both web and local sources.
-- Compare at least two alternatives when recommending a library.
-- Summarize trade-offs in a table: maintenance status, bundle size, API ergonomics.
-- Conclude with a single recommendation and rationale.
+All commands go through `just`. Run `just --list` to list available recipes.
+
+```sh
+just setup       # Install dependencies
+just ci-local    # Run local CI
+just back-dev    # Start backend dev server
+just back-check  # Backend lint + format check
+just back-fix    # Backend auto-fix
+just back-test   # Backend tests
+just back-ci     # Backend CI (check → test → build)
+just front-dev   # Start frontend dev server
+just front-check # Frontend lint + format check
+just front-fix   # Frontend auto-fix
+just front-test  # Frontend tests
+just front-ci    # Frontend CI (check → test → build)
+```
+
+## Conventions
+
+- All development commands are defined in `justfile`.
+- Shared code belongs in `packages/`, application code in `apps/`.
+- TDD by default: write tests before implementation.
+- No inline fallback values for missing config — fail early.
+- Comments only for non-obvious "why", never for "what".
