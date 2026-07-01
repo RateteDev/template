@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-make lint
-make fmt
+just lint
+just format

@@ -5,7 +5,7 @@
 ```sh
 git clone {repo-url}
 cd {project-name}
-make setup
+just setup
 ```
 
 ## Development Workflow
@@ -13,7 +13,7 @@ make setup
 1. Create a branch from `main`.
 2. Write tests first (TDD).
 3. Implement the feature or fix.
-4. Run `make lint && make test` to verify.
+4. Run `just lint && just format && just test` to verify.
 5. Commit with a concise message describing **why**, not what.
 
 ## Commit Messages
@@ -25,7 +25,7 @@ make setup
 ## Project Structure
 
 ```
-app/        — Application code
+apps/       — Application code
 packages/   — Shared internal packages
 ```
 
@@ -34,4 +34,4 @@ packages/   — Shared internal packages
 - Follow the conventions documented in `CLAUDE.md`.
 - No inline comments explaining "what" — only "why" when non-obvious.
 - No inline fallback values for missing config.
-- All commands go through `Makefile`.
+- All commands go through `justfile`.

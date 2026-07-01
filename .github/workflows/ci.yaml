@@ -6,17 +6,41 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  check:
+  repo-checks:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - name: Lint
-        run: make lint
+      - name: Check agents sync
+        run: |
+          diff -q CLAUDE.md AGENTS.md >/dev/null || { echo "CLAUDE.md and AGENTS.md are out of sync. Run: cp CLAUDE.md AGENTS.md"; exit 1; }
 
-      - name: Test
-        run: make test
+  # TODO: Add per-app CI jobs (e.g. be-ci, fl-ci)
+  # Each app should have its own job with appropriate setup steps.
+  # Example:
+  #   be-ci:
+  #     runs-on: ubuntu-latest
+  #     timeout-minutes: 15
+  #     steps:
+  #       - uses: actions/checkout@v4
+  #       - uses: extractions/setup-just@v2
+  #       - run: just be-ci
 
-      - name: Build
-        run: make build
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: extractions/setup-just@v2
+
+      # TODO: Add language/runtime setup steps here
+
+      - name: CI
+        run: just ci-local
