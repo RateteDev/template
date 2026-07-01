@@ -24,8 +24,8 @@ just setup      # Install dependencies
 just dev        # Start dev servers
 just build      # Build everything
 just test       # Run tests
-just lint       # Lint
-just format     # Format
+just check      # Lint + format check
+just fix        # Auto-fix lint + format
 just ci-local   # Run local CI
 ```
 

@@ -25,15 +25,15 @@ dev:
 build:
     @echo "TODO: implement build"
 
-# Run linters
+# Run lint and format checks without modifying files
 [group('Development')]
-lint:
-    @echo "TODO: implement lint"
+check:
+    @echo "TODO: implement check"
 
-# Format code
+# Auto-fix all lint and format issues
 [group('Development')]
-format:
-    @echo "TODO: implement fmt"
+fix:
+    @echo "TODO: implement fix"
 
 # ─── Test ───
 
@@ -51,12 +51,11 @@ test-watch:
 
 # Run local CI (mirrors remote CI pipeline)
 [group('CI')]
-ci-local: check-agents-sync
-    just lint
+ci-local: _check-agents-sync
+    just check
     just test
     just build
 
-# Check that AGENTS.md is in sync with CLAUDE.md
-[group('CI')]
-check-agents-sync:
+[private]
+_check-agents-sync:
     @diff -q CLAUDE.md AGENTS.md >/dev/null || { echo "CLAUDE.md and AGENTS.md are out of sync. Run: cp CLAUDE.md AGENTS.md"; exit 1; }

@@ -13,7 +13,7 @@ just setup
 1. Create a branch from `main`.
 2. Write tests first (TDD).
 3. Implement the feature or fix.
-4. Run `just lint && just format && just test` to verify.
+4. Run `just check && just test` to verify.
 5. Commit with a concise message describing **why**, not what.
 
 ## Commit Messages

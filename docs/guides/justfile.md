@@ -25,15 +25,39 @@ dev:
     bun run dev
 ```
 
+### check / fix パターン
+
+アプリ毎に `{app}-check` と `{app}-fix` の2レシピを用意する。lint とフォーマットのツールが分離しているか一体型かはアプリによって異なるが、この2レシピで吸収し、開発者がツールの違いを意識しなくて済むようにする。
+
+- `check` — lint + フォーマットチェック + 型検査等を実行する。ファイルを書き換えない。CI と pre-commit で使用する。
+- `fix` — 自動修正可能な処理をすべて実行する。lint の autofix とフォーマットの適用を含む。
+
+```just
+# Biome (lint + format が一体型) の場合
+[private]
+_be-check:
+    cd apps/backend && bunx biome check .
+
+[private]
+_be-fix:
+    cd apps/backend && bunx biome check --write .
+
+# Dart (lint と format が分離型) の場合
+[private]
+_fl-check:
+    cd apps/android && flutter analyze
+    cd apps/android && dart run custom_lint
+    cd apps/android && dart format --set-exit-if-changed lib/ test/
+
+[private]
+_fl-fix:
+    cd apps/android && dart fix --apply
+    cd apps/android && dart format lib/ test/
+```
+
 ### 内部レシピ
 
 外部に公開しないレシピには `[private]` アトリビュートを付け、名前を `_` で始める。`just --list` に表示されなくなる。
-
-```just
-[private]
-_lint-backend:
-    cd apps/backend && bunx biome check .
-```
 
 ### 命名規則
 
