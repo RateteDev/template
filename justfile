@@ -1,15 +1,15 @@
 set shell := ["bash", "-euo", "pipefail", "-c"]
 
-# ─── Setup ───
+# ─── Setup & Clean ───
 
 # Install dependencies and configure local environment (run once after clone)
-[group('Setup')]
+[group('Setup & Clean')]
 setup:
     git config core.hooksPath .githooks
     @echo "TODO: implement setup"
 
 # Remove build artifacts and caches
-[group('Setup')]
+[group('Setup & Clean')]
 clean:
     @echo "TODO: implement clean"
 
@@ -17,66 +17,75 @@ clean:
 
 # Start backend development server
 [group('Backend')]
-be-dev:
-    @echo "TODO: implement be-dev"
+back-dev:
+    @echo "TODO: implement back-dev"
 
 # Build backend
 [group('Backend')]
-be-build:
-    @echo "TODO: implement be-build"
+back-build:
+    @echo "TODO: implement back-build"
 
 # Run backend lint and format checks without modifying files
 [group('Backend')]
-be-check:
-    @echo "TODO: implement be-check"
+back-check:
+    @echo "TODO: implement back-check"
 
 # Auto-fix backend lint and format issues
 [group('Backend')]
-be-fix:
-    @echo "TODO: implement be-fix"
+back-fix:
+    @echo "TODO: implement back-fix"
 
 # Run backend tests
 [group('Backend')]
-be-test:
-    @echo "TODO: implement be-test"
+back-test:
+    @echo "TODO: implement back-test"
+
+# Run backend CI (check → test → build)
+[group('Backend')]
+back-ci:
+    just back-check
+    just back-test
+    just back-build
 
 # ─── Frontend ───
 
 # Start frontend development server
 [group('Frontend')]
-fe-dev:
-    @echo "TODO: implement fe-dev"
+front-dev:
+    @echo "TODO: implement front-dev"
 
 # Build frontend
 [group('Frontend')]
-fe-build:
-    @echo "TODO: implement fe-build"
+front-build:
+    @echo "TODO: implement front-build"
 
 # Run frontend lint and format checks without modifying files
 [group('Frontend')]
-fe-check:
-    @echo "TODO: implement fe-check"
+front-check:
+    @echo "TODO: implement front-check"
 
 # Auto-fix frontend lint and format issues
 [group('Frontend')]
-fe-fix:
-    @echo "TODO: implement fe-fix"
+front-fix:
+    @echo "TODO: implement front-fix"
 
 # Run frontend tests
 [group('Frontend')]
-fe-test:
-    @echo "TODO: implement fe-test"
+front-test:
+    @echo "TODO: implement front-test"
+
+# Run frontend CI (check → test → build)
+[group('Frontend')]
+front-ci:
+    just front-check
+    just front-test
+    just front-build
 
 # ─── CI ───
 
 # Run local CI (mirrors remote CI pipeline)
 ci-local: _check-agents-sync
-    just be-check
-    just be-test
-    just be-build
-    just fe-check
-    just fe-test
-    just fe-build
+    just back-ci & just front-ci & wait
 
 [private]
 _check-agents-sync:
