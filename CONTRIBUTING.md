@@ -1,13 +1,5 @@
 # Contributing
 
-## Getting Started
-
-```sh
-git clone {repo-url}
-cd {project-name}
-just setup
-```
-
 ## Development Workflow
 
 1. Create a branch from `main`.
@@ -18,8 +10,7 @@ just setup
 
 ## References
 
-- Commands: `just --list` or `CLAUDE.md`
-- Project structure / conventions: `CLAUDE.md`
+- Setup / commands / conventions: `CLAUDE.md`
 - Commit messages: `docs/rules/コミットルール.md`
 - Merge commits: `docs/rules/マージコミットルール.md`
 - Guides: `docs/guides/`
