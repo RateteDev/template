@@ -7,6 +7,7 @@
 - Project overview / conventions: `CLAUDE.md`
 - Contributing: `CONTRIBUTING.md`
 - Guides: `docs/guides/`
+- Decision records: `docs/adr/`
 
 ## License
 

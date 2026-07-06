@@ -14,3 +14,4 @@
 - Commit messages: `docs/rules/コミットルール.md`
 - Merge commits: `docs/rules/マージコミットルール.md`
 - Guides: `docs/guides/`
+- Decision records: `docs/adr/`
