@@ -91,3 +91,15 @@ ci-local:
 [private]
 _check-agents-sync:
     @diff -q CLAUDE.md AGENTS.md >/dev/null || { echo "CLAUDE.md and AGENTS.md are out of sync. Run: cp CLAUDE.md AGENTS.md"; exit 1; }
+
+# ─── Claude Code ───
+
+[private]
+_session-start:
+    @echo '=== just --list ==='
+    @echo '$ just --list'
+    @just --list
+    @echo ''
+    @echo '=== docs ==='
+    @echo '$ find docs -type f'
+    @find docs -type f | sort | awk -F/ '{d=$0; sub(/[^/]+$/,"",d); if (d!=p) {print d; p=d}; f=$0; sub(/^.*\//,"",f); print "  " f}'
