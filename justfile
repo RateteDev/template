@@ -6,6 +6,7 @@ set shell := ["bash", "-euo", "pipefail", "-c"]
 [group('Setup & Clean')]
 setup:
     git config core.hooksPath .githooks
+    git config core.quotepath false
     @echo "TODO: implement setup"
 
 # Remove build artifacts and caches
